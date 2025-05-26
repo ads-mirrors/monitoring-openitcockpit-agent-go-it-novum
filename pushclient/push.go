@@ -143,6 +143,7 @@ func (p *PushClient) httpRequest(ctx context.Context, url *url.URL, sendJson int
 	}
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Authorization", p.apiKeyHeader)
+	req.Header.Add("User-Agent", "openITCOCKPIT Agent/"+config.AgentVersion)
 
 	res, err := p.client.Do(req)
 	if err != nil {
