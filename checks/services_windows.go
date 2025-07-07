@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"unsafe"
 
-	"github.com/it-novum/openitcockpit-agent-go/config"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/config"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 	"github.com/yusufpapurcu/wmi"

@@ -4,8 +4,8 @@ import (
 	"context"
 	"sync"
 
-	"github.com/it-novum/openitcockpit-agent-go/config"
-	"github.com/it-novum/openitcockpit-agent-go/utils"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/config"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/utils"
 	log "github.com/sirupsen/logrus"
 )
 

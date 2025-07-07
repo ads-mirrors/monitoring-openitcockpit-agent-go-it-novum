@@ -4,7 +4,7 @@ import (
 	"context"
 	"sync"
 
-	"github.com/it-novum/openitcockpit-agent-go/config"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/config"
 	log "github.com/sirupsen/logrus"
 )
 

@@ -10,8 +10,8 @@ import (
 	"runtime"
 	"sync"
 
-	"github.com/it-novum/openitcockpit-agent-go/agentrt"
-	"github.com/it-novum/openitcockpit-agent-go/platformpaths"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/agentrt"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/platformpaths"
 	"github.com/spf13/cobra"
 )
 

@@ -1,7 +1,7 @@
 package checks
 
 import (
-	"github.com/it-novum/openitcockpit-agent-go/config"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/config"
 )
 
 // CheckNtp gathers information about  time offset between the system clock and the chosen time source (NTP)

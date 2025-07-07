@@ -2,7 +2,7 @@ package checks
 
 import (
 	"context"
-	"github.com/it-novum/openitcockpit-agent-go/winpsapi"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/winpsapi"
 	"github.com/pkg/errors"
 	"github.com/shirou/gopsutil/v3/process"
 )

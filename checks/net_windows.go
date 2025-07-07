@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/it-novum/openitcockpit-agent-go/winifmib"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/winifmib"
 	"golang.org/x/sys/windows"
 )
 

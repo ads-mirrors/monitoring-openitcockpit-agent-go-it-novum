@@ -10,8 +10,8 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/yusufpapurcu/wmi"
 
-	"github.com/it-novum/openitcockpit-agent-go/config"
-	"github.com/it-novum/openitcockpit-agent-go/utils"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/config"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/utils"
 )
 
 /*

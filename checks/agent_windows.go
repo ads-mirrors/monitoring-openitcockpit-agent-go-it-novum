@@ -5,7 +5,7 @@ import (
 	"runtime"
 	"time"
 
-	"github.com/it-novum/openitcockpit-agent-go/config"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/config"
 	"github.com/yusufpapurcu/wmi"
 	"golang.org/x/sys/windows/registry"
 )

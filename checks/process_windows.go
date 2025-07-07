@@ -4,8 +4,8 @@ import (
 	"context"
 	"runtime"
 
-	"github.com/it-novum/openitcockpit-agent-go/safemaths"
-	"github.com/it-novum/openitcockpit-agent-go/winpsapi"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/safemaths"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/winpsapi"
 	"github.com/pkg/errors"
 	"github.com/shirou/gopsutil/v3/mem"
 	log "github.com/sirupsen/logrus"

@@ -1,4 +1,4 @@
-module github.com/it-novum/openitcockpit-agent-go
+module github.com/openITCOCKPIT/openitcockpit-agent-go
 
 go 1.20
 
@@ -62,4 +62,4 @@ require (
 	howett.net/plist v1.0.0 // indirect
 )
 
-replace github.com/shirou/gopsutil/v3 v3.20.12 => github.com/it-novum/gopsutil/v3 v3.21.2-0.20210201093253-6e7f4ffe9947
+replace github.com/shirou/gopsutil/v3 v3.20.12 => github.com/openITCOCKPIT/gopsutil/v3 v3.21.2-0.20210201093253-6e7f4ffe9947

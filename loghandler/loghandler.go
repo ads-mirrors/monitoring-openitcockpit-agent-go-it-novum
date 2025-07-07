@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"github.com/andybalholm/crlf"
-	"github.com/it-novum/openitcockpit-agent-go/utils"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/utils"
 	log "github.com/sirupsen/logrus"
 )
 

@@ -11,8 +11,8 @@ import (
 
 	"github.com/yusufpapurcu/wmi"
 
-	"github.com/it-novum/openitcockpit-agent-go/agentrt"
-	"github.com/it-novum/openitcockpit-agent-go/platformpaths"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/agentrt"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/platformpaths"
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/sys/windows/svc"
 	"golang.org/x/sys/windows/svc/debug"

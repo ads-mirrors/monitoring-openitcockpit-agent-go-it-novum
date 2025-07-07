@@ -5,7 +5,7 @@ package main
 import (
 	"os"
 
-	"github.com/it-novum/openitcockpit-agent-go/cmd"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/cmd"
 )
 
 func platform_main() {

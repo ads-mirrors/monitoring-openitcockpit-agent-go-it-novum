@@ -7,12 +7,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/it-novum/openitcockpit-agent-go/checkrunner"
-	"github.com/it-novum/openitcockpit-agent-go/checks"
-	"github.com/it-novum/openitcockpit-agent-go/config"
-	"github.com/it-novum/openitcockpit-agent-go/loghandler"
-	"github.com/it-novum/openitcockpit-agent-go/pushclient"
-	"github.com/it-novum/openitcockpit-agent-go/webserver"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/checkrunner"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/checks"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/config"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/loghandler"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/pushclient"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/webserver"
 	log "github.com/sirupsen/logrus"
 )
 

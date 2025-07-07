@@ -10,8 +10,8 @@ import (
 	"math"
 	"time"
 
-	"github.com/it-novum/openitcockpit-agent-go/config"
-	"github.com/it-novum/openitcockpit-agent-go/safemaths"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/config"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/safemaths"
 	libvirt "libvirt.org/libvirt-go"
 )
 

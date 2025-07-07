@@ -9,7 +9,7 @@
     <ROW Property="ALLUSERS" Value="1"/>
     <ROW Property="ARPCOMMENTS" Value="Diese Datenbank ist korrekt und enthält nötige Daten um [|DISPLAYNAME] zu installieren." ValueLocId="*"/>
     <ROW Property="ARPCONTACT" Value="community@openitcockpit.io"/>
-    <ROW Property="ARPHELPLINK" Value="https://github.com/it-novum/openitcockpit-agent-go/issues"/>
+    <ROW Property="ARPHELPLINK" Value="https://github.com/openITCOCKPIT/openitcockpit-agent-go/issues"/>
     <ROW Property="ARPNOREPAIR" Value="1"/>
     <ROW Property="ARPPRODUCTICON" Value="app.exe" Type="8"/>
     <ROW Property="ARPSYSTEMCOMPONENT" Value="1"/>

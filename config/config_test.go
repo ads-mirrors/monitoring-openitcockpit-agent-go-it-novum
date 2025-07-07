@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/it-novum/openitcockpit-agent-go/platformpaths"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/platformpaths"
 )
 
 var agentVersion1ConfigBlank string = `[default]

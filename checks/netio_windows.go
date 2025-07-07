@@ -2,8 +2,8 @@ package checks
 
 import (
 	"context"
-	"github.com/it-novum/openitcockpit-agent-go/safemaths"
-	"github.com/it-novum/openitcockpit-agent-go/winifmib"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/safemaths"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/winifmib"
 	log "github.com/sirupsen/logrus"
 	"time"
 )

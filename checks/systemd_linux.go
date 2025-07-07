@@ -6,7 +6,7 @@ import (
 
 	"github.com/coreos/go-systemd/v22/dbus"
 	systemdutil "github.com/coreos/go-systemd/v22/util"
-	"github.com/it-novum/openitcockpit-agent-go/config"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/config"
 )
 
 // we have to reuse the systemd dbus connection, because the dbus lib uses some sort of reuse stuff

@@ -7,9 +7,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/it-novum/openitcockpit-agent-go/basiclog"
-	"github.com/it-novum/openitcockpit-agent-go/platformpaths"
-	"github.com/it-novum/openitcockpit-agent-go/utils"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/basiclog"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/platformpaths"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/utils"
 	"github.com/spf13/viper"
 )
 

@@ -6,8 +6,8 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/it-novum/openitcockpit-agent-go/safemaths"
-	"github.com/it-novum/openitcockpit-agent-go/utils"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/safemaths"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/utils"
 	"github.com/prometheus-community/windows_exporter/perflib"
 )
 

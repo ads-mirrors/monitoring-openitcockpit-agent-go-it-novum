@@ -637,7 +637,7 @@ def publish_packages() {
             createrepo is the old Python createrepo which does not exists on Ubuntu Focal.
             Ubuntu Focal has no createrepo_c.
             For this reason we use a Docker image with a recent version of createrepo_c which works fine
-            https://github.com/it-novum/createrepo_c-docker
+            https://github.com/openITCOCKPIT/createrepo_c-docker
             */
             /*sh """createrepo rpm/stable"""*/
             sh """docker run --rm --user 111:116 -v '${env.WORKSPACE}/publish/rpm/stable':/rpm openitcockpit/createrepo_c"""

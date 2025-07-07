@@ -7,7 +7,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/it-novum/openitcockpit-agent-go/safemaths"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/safemaths"
 	"github.com/shirou/gopsutil/v3/net"
 	log "github.com/sirupsen/logrus"
 )

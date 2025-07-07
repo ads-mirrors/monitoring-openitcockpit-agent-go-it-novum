@@ -1,7 +1,7 @@
 # openITCOCKPIT Monitoring Agent 3.0
 Cross-Platform Monitoring Agent for openITCOCKPIT written in Go
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/it-novum/openitcockpit-agent-go)](https://goreportcard.com/report/github.com/it-novum/openitcockpit-agent-go)
+[![Go Report Card](https://goreportcard.com/badge/github.com/openITCOCKPIT/openitcockpit-agent-go)](https://goreportcard.com/report/github.com/openITCOCKPIT/openitcockpit-agent-go)
 [![Build Status](https://drone.openitcockpit.io/buildStatus/icon?job=openitcockpit-agent-go%2Fmain)](https://drone.openitcockpit.io/job/openitcockpit-agent-go/job/main/)
 
 ## Table of contents
@@ -27,14 +27,14 @@ Please notice: Due to old versions of PowerShell on Windows 7 / Windows Server 2
 Windows 7 / Windows Server 2008 R2 is official not supported by the Agent - even if it probably works.
 
 ## Update from Agent 1.x to 3.x
-Please see the [update guide from the documentation](https://github.com/it-novum/openitcockpit-agent-go/wiki/Update-from-Agent-1.x-to-3.x) for details.
+Please see the [update guide from the documentation](https://github.com/openITCOCKPIT/openitcockpit-agent-go/wiki/Update-from-Agent-1.x-to-3.x) for details.
 
 ## Requirements
 * openITCOCKPIT Version >= 4.2
 
 ## Installation
 
-Please visit the [release page](https://github.com/it-novum/openitcockpit-agent-go/releases) to download the latest or older versions.
+Please visit the [release page](https://github.com/openITCOCKPIT/openitcockpit-agent-go/releases) to download the latest or older versions.
 
 ### Debian and Ubuntu
 
@@ -151,12 +151,12 @@ sudo installer -pkg openitcockpit-agent-uninstaller-3.x.x-darwin-amd64.pkg -targ
 | arm64 / Apple Silicon | Use the 32 bit version | ✅     | ✅     |
 
 
-Please see to Wiki how to [cross compile binaries](https://github.com/it-novum/openitcockpit-agent-go/wiki/Build-binary#cross-compile) for different operating systems and CPU architectures.
+Please see to Wiki how to [cross compile binaries](https://github.com/openITCOCKPIT/openitcockpit-agent-go/wiki/Build-binary#cross-compile) for different operating systems and CPU architectures.
 
 ## Full documentation
 Do you want to build own binaries, learn more about cross compiling or how to start hacking the Agent?
 
-Please see the [full documentation](https://github.com/it-novum/openitcockpit-agent-go/wiki).
+Please see the [full documentation](https://github.com/openITCOCKPIT/openitcockpit-agent-go/wiki).
 
 ## License
 ```

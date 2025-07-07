@@ -3,7 +3,7 @@ package checks
 import (
 	"context"
 
-	"github.com/it-novum/openitcockpit-agent-go/config"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/config"
 	"github.com/shirou/gopsutil/v3/load"
 )
 

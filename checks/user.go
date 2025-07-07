@@ -1,7 +1,7 @@
 package checks
 
 import (
-	"github.com/it-novum/openitcockpit-agent-go/config"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/config"
 )
 
 // CheckUser gathers information about system users

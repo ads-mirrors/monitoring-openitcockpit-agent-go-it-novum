@@ -1,6 +1,6 @@
 package checks
 
-import "github.com/it-novum/openitcockpit-agent-go/config"
+import "github.com/openITCOCKPIT/openitcockpit-agent-go/config"
 
 // CheckNet gathers information about system network interfaces (netstats or net_states in the Python version)
 type CheckNet struct {

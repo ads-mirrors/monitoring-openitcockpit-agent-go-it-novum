@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/it-novum/openitcockpit-agent-go/utils"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/utils"
 )
 
 type ps struct {
