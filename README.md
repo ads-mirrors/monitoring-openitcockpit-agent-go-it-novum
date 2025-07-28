@@ -160,7 +160,8 @@ Please see the [full documentation](https://github.com/openITCOCKPIT/openitcockp
 
 ## License
 ```
-Copyright 2021 it-novum GmbH
+Copyright (C) 2021-2025  it-novum GmbH
+Copyright (C) 2025-today Allgeier IT Services GmbH
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
