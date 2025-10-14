@@ -445,6 +445,10 @@ def build_windows_binary() {
         catchError(buildResult: null, stageResult: 'FAILURE') {
             bat "mkdir release\\$GOOS\\$GOARCH"
             bat "go.exe build -o release/$GOOS/$GOARCH/$BINNAME main.go"
+
+            // ITC-3498 Contain information about 3rd party licenses in the package
+            bat "go.exe install github.com/google/go-licenses/v2@latest"
+            bat "%userprofile%\\go\\bin\\go-licenses.exe report . --ignore 'github.com/openITCOCKPIT/openitcockpit-agent-go' > release/$GOOS/$GOARCH/licenses.csv"
         }
         archiveArtifacts artifacts: "release/$GOOS/$GOARCH/**", fingerprint: true
         stash name: "release-$GOOS-$GOARCH", includes: "release/$GOOS/$GOARCH/**"
@@ -458,6 +462,10 @@ def build_binary() {
         catchError(buildResult: null, stageResult: 'FAILURE') {
             sh "mkdir -p release/$GOOS/$GOARCH"
             sh "go build -o release/$GOOS/$GOARCH/$BINNAME main.go"
+
+            // ITC-3498 Contain information about 3rd party licenses in the package
+            sh "go install github.com/google/go-licenses/v2@latest"
+            sh "$HOME/go/bin/go-licenses report . --ignore \"github.com/openITCOCKPIT/openitcockpit-agent-go\" > release/$GOOS/$GOARCH/licenses.csv"
         }
         archiveArtifacts artifacts: "release/$GOOS/$GOARCH/**", fingerprint: true
         stash name: "release-$GOOS-$GOARCH", includes: "release/$GOOS/$GOARCH/**"
@@ -470,13 +478,14 @@ def package_linux() {
 
         unstash name: "release-$GOOS-$GOARCH"
 
-        sh "mkdir -p package/usr/bin package/etc/openitcockpit-agent/init release/packages/$GOOS package/var/log/openitcockpit-agent"
+        sh "mkdir -p package/usr/bin package/etc/openitcockpit-agent/init release/packages/$GOOS package/var/log/openitcockpit-agent package/usr/share/doc/openitcockpit-agent"
         sh 'cp example/config_example.ini package/etc/openitcockpit-agent/config.ini'
         sh 'cp example/customchecks_example.ini package/etc/openitcockpit-agent/customchecks.ini'
         sh 'cp example/prometheus_exporters_example.ini package/etc/openitcockpit-agent/prometheus_exporters.ini'
         sh 'cp build/package/openitcockpit-agent.init package/etc/openitcockpit-agent/init/openitcockpit-agent.init'
         sh 'cp build/package/openitcockpit-agent.service package/etc/openitcockpit-agent/init/openitcockpit-agent.service'
         sh "cp release/linux/$GOARCH/$BINNAME package/usr/bin/$BINNAME"
+        sh "cp release/linux/$GOARCH/licenses.csv package/usr/share/doc/openitcockpit-agent/licenses.csv"
         sh "chmod +x package/usr/bin/$BINNAME"
         sh "chmod +x package/etc/openitcockpit-agent/init/openitcockpit-agent.init"
         sh """cd release/packages/$GOOS &&
@@ -539,6 +548,7 @@ def package_darwin_amd64() {
 
         sh "mkdir -p package/Applications/openitcockpit-agent package_osx_uninstaller release/packages/$GOOS"
         sh "cp release/$GOOS/$GOARCH/$BINNAME package/Applications/openitcockpit-agent/"
+        sh "cp release/$GOOS/$GOARCH/licenses.csv package/Applications/openitcockpit-agent/"
         sh "cp example/config_example.ini package/Applications/openitcockpit-agent/config.ini"
         sh "cp example/customchecks_example.ini package/Applications/openitcockpit-agent/customchecks.ini"
         sh "cp example/prometheus_exporters_example.ini package/Applications/openitcockpit-agent/prometheus_exporters.ini"
@@ -585,6 +595,7 @@ def package_darwin_arm64() {
 
         sh "mkdir -p package/Applications/openitcockpit-agent package_osx_uninstaller release/packages/$GOOS"
         sh "cp release/$GOOS/$GOARCH/$BINNAME package/Applications/openitcockpit-agent/"
+        sh "cp release/$GOOS/$GOARCH/licenses.csv package/Applications/openitcockpit-agent/"
         sh "cp example/config_example.ini package/Applications/openitcockpit-agent/config.ini"
         sh "cp example/customchecks_example.ini package/Applications/openitcockpit-agent/customchecks.ini"
         sh "cp example/prometheus_exporters_example.ini package/Applications/openitcockpit-agent/prometheus_exporters.ini"
