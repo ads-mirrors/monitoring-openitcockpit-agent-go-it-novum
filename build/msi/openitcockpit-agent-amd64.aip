@@ -59,6 +59,7 @@
     <ROW File="example_customchecks.cnf" Component_="example_config.cnf" FileName="CUSTOM~1.INI|customchecks.ini" Attributes="0" SourcePath="&lt;AGENT_SOURCE&gt;example\customchecks_example.ini" SelfReg="false"/>
     <ROW File="openitcockpitagent.exe" Component_="openitcockpitagent.exe" FileName="OPENIT~1.EXE|openitcockpit-agent.exe" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AGENT_SOURCE&gt;release\windows\amd64\openitcockpit-agent.exe" SelfReg="false" DigSign="true"/>
     <ROW File="customchecks1.ini" Component_="example_config.cnf" FileName="PROMET~1.INI|prometheus_exporters.ini" Attributes="0" SourcePath="&lt;AGENT_SOURCE&gt;example\prometheus_exporters_example.ini" SelfReg="false"/>
+    <ROW File="licenses.csv" Component_="example_config.cnf" FileName="licenses.csv" Attributes="0" SourcePath="&lt;AGENT_SOURCE&gt;release\windows\amd64\licenses.csv" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.AiPersistentDataComponent">
     <ROW PersistentRow="example_config.cnf" Type="0" Condition="1"/>
