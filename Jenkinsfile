@@ -100,7 +100,7 @@ pipeline {
                     stages {
                         stage('amd64') {
                             agent {
-                                label 'macos'
+                                label 'macos-intel64'
                             }
                             environment {
                                 GOARCH = 'amd64'
@@ -224,7 +224,7 @@ pipeline {
                     stages {
                         stage('amd64') {
                             agent {
-                                label 'macos'
+                                label 'macos-intel64'
                             }
                             environment {
                                 GOARCH = 'amd64'
@@ -362,7 +362,7 @@ pipeline {
                     stages {
                         stage('amd64') {
                             agent {
-                                label 'macos'
+                                label 'macos-intel64'
                             }
                             environment {
                                 ARCH = 'amd64'
