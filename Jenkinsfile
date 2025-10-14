@@ -465,7 +465,7 @@ def build_binary_linux() {
 
             // ITC-3498 Contain information about 3rd party licenses in the package
             sh "go install github.com/google/go-licenses/v2@latest"
-            sh "/root/go/bin/go-licenses report . --ignore \"github.com/openITCOCKPIT/openitcockpit-agent-go\" > release/$GOOS/$GOARCH/licenses.csv"
+            sh "/go/bin/go-licenses report . --ignore \"github.com/openITCOCKPIT/openitcockpit-agent-go\" > release/$GOOS/$GOARCH/licenses.csv"
         }
         archiveArtifacts artifacts: "release/$GOOS/$GOARCH/**", fingerprint: true
         stash name: "release-$GOOS-$GOARCH", includes: "release/$GOOS/$GOARCH/**"
