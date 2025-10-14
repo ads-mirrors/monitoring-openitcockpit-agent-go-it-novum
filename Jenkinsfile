@@ -172,7 +172,7 @@ pipeline {
                                 GOARCH = 'amd64'
                             }
                             steps {
-                                build_binary()
+                                build_binary_linux()
                             }
                         }
                         stage('386') {
@@ -180,7 +180,7 @@ pipeline {
                                 GOARCH = '386'
                             }
                             steps {
-                                build_binary()
+                                build_binary_linux()
                             }
                         }
                         stage('arm') {
@@ -188,7 +188,7 @@ pipeline {
                                 GOARCH = 'arm'
                             }
                             steps {
-                                build_binary()
+                                build_binary_linux()
                             }
 
                         }
@@ -197,7 +197,7 @@ pipeline {
                                 GOARCH = 'arm64'
                             }
                             steps {
-                                build_binary()
+                                build_binary_linux()
                             }
                         }
                         // Build for PowerPC (Little-endian)
@@ -211,7 +211,7 @@ pipeline {
                                 GOARCH = 'ppc64le'
                             }
                             steps {
-                                build_binary()
+                                build_binary_linux()
                             }
                         }
                     }
@@ -230,7 +230,7 @@ pipeline {
                                 GOARCH = 'amd64'
                             }
                             steps {
-                                build_binary()
+                                build_binary_macos()
                             }
                         }
                         stage('arm64') {
@@ -241,7 +241,7 @@ pipeline {
                                 GOARCH = 'arm64'
                             }
                             steps {
-                                build_binary()
+                                build_binary_macos()
                             }
                         }
                     }
@@ -455,7 +455,24 @@ def build_windows_binary() {
     }
 }
 
-def build_binary() {
+def build_binary_linux() {
+    timeout(time: 5, unit: 'MINUTES') {
+        cleanup()
+
+        catchError(buildResult: null, stageResult: 'FAILURE') {
+            sh "mkdir -p release/$GOOS/$GOARCH"
+            sh "go build -o release/$GOOS/$GOARCH/$BINNAME main.go"
+
+            // ITC-3498 Contain information about 3rd party licenses in the package
+            sh "go install github.com/google/go-licenses/v2@latest"
+            sh "/root/go/bin/go-licenses report . --ignore \"github.com/openITCOCKPIT/openitcockpit-agent-go\" > release/$GOOS/$GOARCH/licenses.csv"
+        }
+        archiveArtifacts artifacts: "release/$GOOS/$GOARCH/**", fingerprint: true
+        stash name: "release-$GOOS-$GOARCH", includes: "release/$GOOS/$GOARCH/**"
+    }
+}
+
+def build_binary_macos() {
     timeout(time: 5, unit: 'MINUTES') {
         cleanup()
 
