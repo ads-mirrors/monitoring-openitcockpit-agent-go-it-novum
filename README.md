@@ -1,4 +1,4 @@
-# openITCOCKPIT Monitoring Agent 3.0
+# openITCOCKPIT Monitoring Agent 3
 Cross-Platform Monitoring Agent for openITCOCKPIT written in Go
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/openITCOCKPIT/openitcockpit-agent-go)](https://goreportcard.com/report/github.com/openITCOCKPIT/openitcockpit-agent-go)
@@ -17,6 +17,21 @@ Cross-Platform Monitoring Agent for openITCOCKPIT written in Go
 * [License](#license)
 
 ## Supported operating systems
+
+* Microsoft Windows Server 2016 or newer
+* Microsoft Windows 10 or newer
+* Apple macOS 15 Sequoia or newer (Intel / Apple Silicon)
+* Linux (Everything from Debian 10 (Buster) / AlmaLinux 8 and newer should work fine)
+
+### Maybe supported operating systems
+
+> [!NOTE]
+> As we move forward we have to drop support for older operating systems from time to time. This does not mean that the openITCOCKPIT Agent can not be used on older operating systems - we simply do not test theme anymore.
+
+If the latest version is not working on your operating system, we recommend to go to the [releases page](https://github.com/openITCOCKPIT/openitcockpit-agent-go/releases) and select a version that fits to the era of your operating system.
+Otherwise you can try build the agent from source.
+
+The following operating systems will may work with the openITCOCKPIT Agent up to version 3.1.0:
 
 * Microsoft Windows Server 2012
 * Microsoft Windows 8 or newer
