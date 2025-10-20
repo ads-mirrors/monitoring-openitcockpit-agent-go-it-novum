@@ -449,6 +449,7 @@ def build_windows_binary() {
             // ITC-3498 Contain information about 3rd party licenses in the package
             bat "go.exe install github.com/google/go-licenses/v2@latest"
             bat "%userprofile%\\go\\bin\\go-licenses.exe report . --ignore 'github.com/openITCOCKPIT/openitcockpit-agent-go' > release/$GOOS/$GOARCH/licenses.csv"
+            bat "%userprofile%\\go\\bin\\go-licenses.exe check . --ignore \"github.com/openITCOCKPIT/openitcockpit-agent-go\" --allowed_licenses=MIT,ISC,MPL-2.0,BSD-2-Clause,BSD-3-Clause,Apache-2.0"
         }
         archiveArtifacts artifacts: "release/$GOOS/$GOARCH/**", fingerprint: true
         stash name: "release-$GOOS-$GOARCH", includes: "release/$GOOS/$GOARCH/**"
@@ -466,6 +467,7 @@ def build_binary_linux() {
             // ITC-3498 Contain information about 3rd party licenses in the package
             sh "go install github.com/google/go-licenses/v2@latest"
             sh "/go/bin/go-licenses report . --ignore \"github.com/openITCOCKPIT/openitcockpit-agent-go\" > release/$GOOS/$GOARCH/licenses.csv"
+            sh "/go/bin/go-licenses check . --ignore \"github.com/openITCOCKPIT/openitcockpit-agent-go\" --allowed_licenses=MIT,ISC,MPL-2.0,BSD-2-Clause,BSD-3-Clause,Apache-2.0"
         }
         archiveArtifacts artifacts: "release/$GOOS/$GOARCH/**", fingerprint: true
         stash name: "release-$GOOS-$GOARCH", includes: "release/$GOOS/$GOARCH/**"
@@ -483,6 +485,7 @@ def build_binary_macos() {
             // ITC-3498 Contain information about 3rd party licenses in the package
             sh "go install github.com/google/go-licenses/v2@latest"
             sh "$HOME/go/bin/go-licenses report . --ignore \"github.com/openITCOCKPIT/openitcockpit-agent-go\" > release/$GOOS/$GOARCH/licenses.csv"
+            sh "$HOME/go/bin/go-licenses check . --ignore \"github.com/openITCOCKPIT/openitcockpit-agent-go\" --allowed_licenses=MIT,ISC,MPL-2.0,BSD-2-Clause,BSD-3-Clause,Apache-2.0"
         }
         archiveArtifacts artifacts: "release/$GOOS/$GOARCH/**", fingerprint: true
         stash name: "release-$GOOS-$GOARCH", includes: "release/$GOOS/$GOARCH/**"
