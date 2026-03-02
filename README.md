@@ -21,7 +21,8 @@ Cross-Platform Monitoring Agent for openITCOCKPIT written in Go
 
 * Microsoft Windows Server 2016 or newer
 * Microsoft Windows 10 or newer
-* Apple macOS 15 Sequoia or newer (Intel / Apple Silicon)
+* Apple macOS 26 Tahoe or newer for Apple Silicon Macs
+  * macOS 15 Sequoia or newer for Intel Macs
 * Linux (Everything from Debian 10 (Buster) / AlmaLinux 8 and newer should work fine)
 * FreeBSD 15
 
