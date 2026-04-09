@@ -5,6 +5,7 @@ package checks
 
 import (
 	"context"
+	"strings"
 
 	"github.com/shirou/gopsutil/v4/disk"
 	log "github.com/sirupsen/logrus"
@@ -51,6 +52,13 @@ func (c *CheckDisk) Run(ctx context.Context) (interface{}, error) {
 
 	for _, device := range disks {
 		if devToIgnore[device.Device] {
+			continue
+		}
+
+		// Skip over thinlinc sessions
+		// https://github.com/openITCOCKPIT/openitcockpit-agent-go/issues/93
+		// Should we also add device.Fstype == "nfs" to the if condition?
+		if strings.Contains(strings.ToLower(device.Mountpoint), "thinlinc/sessions") {
 			continue
 		}
 
