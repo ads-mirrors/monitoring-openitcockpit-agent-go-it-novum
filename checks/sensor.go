@@ -63,9 +63,10 @@ func (c *CheckSensor) Run(ctx context.Context) (interface{}, error) {
 
 			sensorResult := &temperatureSensor{
 				Label:    label,
-				Current:  sensor.Temperature,
-				High:     sensor.High,
-				Critical: sensor.Critical}
+				Current:  utils.SafeFloat(sensor.Temperature),
+				High:     utils.SafeFloat(sensor.High),
+				Critical: utils.SafeFloat(sensor.Critical),
+			}
 			sensorResults = append(sensorResults, sensorResult)
 		}
 	}
@@ -76,10 +77,16 @@ func (c *CheckSensor) Run(ctx context.Context) (interface{}, error) {
 		log.Errorln("Check Sensors: Batteries: ", err)
 	} else {
 		for i, battery := range batteries {
+			// Check for devision by zero
+			percent := 0.0
+			if battery.Full > 0 {
+				percent = (battery.Current / battery.Full) * 100
+			}
+
 			batResult := &batterySensor{
 				ID:           i,
-				Percent:      battery.Current / battery.Full * 100,
-				PowerPlugged: (battery.State.String() == "Full" || battery.State.String() == "Charging"),
+				Percent:      utils.SafeFloat(percent),
+				PowerPlugged: (battery.State.String() == "Full" || battery.State.String() == "Charging" || battery.State.String() == "Idle"),
 			}
 			batteriesResults = append(batteriesResults, batResult)
 		}
