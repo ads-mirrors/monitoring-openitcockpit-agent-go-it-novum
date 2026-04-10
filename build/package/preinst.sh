@@ -49,36 +49,37 @@ if [ -f /usr/bin/openitcockpit-agent ]; then
 
 fi
 
-# Move Agent 1.x configs on macOS
-set +e
-if [ -f /Applications/openitcockpit-agent/config.cnf ]; then
-    mv /Applications/openitcockpit-agent/config.cnf /Applications/openitcockpit-agent/config.ini
-fi
-
-if [ -f /Applications/openitcockpit-agent/customchecks.cnf ]; then
-    mv /Applications/openitcockpit-agent/customchecks.cnf /Applications/openitcockpit-agent/customchecks.ini
-fi
-set -e
-
-
-if [ -f /Applications/openitcockpit-agent/openitcockpit-agent ]; then
-
-    if [ -f /Applications/openitcockpit-agent/com.it-novum.openitcockpit.agent.plist ]; then
-        /bin/launchctl stop com.it-novum.openitcockpit.agent
-        /bin/launchctl unload -F /Applications/openitcockpit-agent/com.it-novum.openitcockpit.agent.plist
-    fi
-
-    # Keep configs on Updates
-    if [ -f /Applications/openitcockpit-agent/config.ini ]; then
-        cp /Applications/openitcockpit-agent/config.ini /Applications/openitcockpit-agent/config.ini.old
-    fi
-
-    if [ -f /Applications/openitcockpit-agent/customchecks.ini ]; then
-        cp /Applications/openitcockpit-agent/customchecks.ini /Applications/openitcockpit-agent/customchecks.ini.old
-    fi
-
-    if [ -f /Applications/openitcockpit-agent/prometheus_exporters.ini ]; then
-        cp /Applications/openitcockpit-agent/prometheus_exporters.ini /Applications/openitcockpit-agent/prometheus_exporters.ini.old
-    fi
-    
-fi
+# macOS part has been moved to macos/preinst.sh
+## Move Agent 1.x configs on macOS
+#set +e
+#if [ -f /Applications/openitcockpit-agent/config.cnf ]; then
+#    mv /Applications/openitcockpit-agent/config.cnf /Applications/openitcockpit-agent/config.ini
+#fi
+#
+#if [ -f /Applications/openitcockpit-agent/customchecks.cnf ]; then
+#    mv /Applications/openitcockpit-agent/customchecks.cnf /Applications/openitcockpit-agent/customchecks.ini
+#fi
+#set -e
+#
+#
+#if [ -f /Applications/openitcockpit-agent/openitcockpit-agent ]; then
+#
+#    if [ -f /Applications/openitcockpit-agent/com.it-novum.openitcockpit.agent.plist ]; then
+#        /bin/launchctl stop com.it-novum.openitcockpit.agent
+#        /bin/launchctl unload -F /Applications/openitcockpit-agent/com.it-novum.openitcockpit.agent.plist
+#    fi
+#
+#    # Keep configs on Updates
+#    if [ -f /Applications/openitcockpit-agent/config.ini ]; then
+#        cp /Applications/openitcockpit-agent/config.ini /Applications/openitcockpit-agent/config.ini.old
+#    fi
+#
+#    if [ -f /Applications/openitcockpit-agent/customchecks.ini ]; then
+#        cp /Applications/openitcockpit-agent/customchecks.ini /Applications/openitcockpit-agent/customchecks.ini.old
+#    fi
+#
+#    if [ -f /Applications/openitcockpit-agent/prometheus_exporters.ini ]; then
+#        cp /Applications/openitcockpit-agent/prometheus_exporters.ini /Applications/openitcockpit-agent/prometheus_exporters.ini.old
+#    fi
+#    
+#fi

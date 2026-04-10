@@ -6,7 +6,7 @@
 *.dylib
 agent
 build/macos/openITCOCKPIT\ Monitoring\ Agent/build
-package/
+#package/
 
 # OS generated files #
 ######################

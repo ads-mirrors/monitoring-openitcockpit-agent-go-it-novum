@@ -54,22 +54,23 @@ if [ -f /usr/bin/openitcockpit-agent ]; then
 
 fi
 
-if [ -f /Applications/openitcockpit-agent/openitcockpit-agent ]; then
-
-    touch /Applications/openitcockpit-agent/tmp_runrm
-
-    set +e
-    /bin/launchctl list | grep com.it-novum.openitcockpit.agent >/dev/null
-    RC=$?
-    if [ "$RC" -eq 0 ]; then
-        /bin/launchctl stop com.it-novum.openitcockpit.agent
-        /bin/launchctl unload -F /Applications/openitcockpit-agent/com.it-novum.openitcockpit.agent.plist
-    fi
-    set -e
-    
-    if [ -d "/Library/Logs/openitcockpit-agent" ]; then
-        rm -rf /Library/Logs/openitcockpit-agent
-    fi
-
-    rm -rf /Applications/openitcockpit-agent/com.it-novum.openitcockpit.agent.plist /Library/LaunchDaemons/com.it-novum.openitcockpit.agent.plist /Applications/openitcockpit-agent/config.ini /Applications/openitcockpit-agent/customchecks.ini /Applications/openitcockpit-agent/prometheus_exporters.ini /Applications/openitcockpit-agent /private/etc/openitcockpit-agent
-fi
+# macOS part has been moved to macos/prerm.sh
+#if [ -f /Applications/openitcockpit-agent/openitcockpit-agent ]; then
+#
+#    touch /Applications/openitcockpit-agent/tmp_runrm
+#
+#    set +e
+#    /bin/launchctl list | grep com.it-novum.openitcockpit.agent >/dev/null
+#    RC=$?
+#    if [ "$RC" -eq 0 ]; then
+#        /bin/launchctl stop com.it-novum.openitcockpit.agent
+#        /bin/launchctl unload -F /Applications/openitcockpit-agent/com.it-novum.openitcockpit.agent.plist
+#    fi
+#    set -e
+#    
+#    if [ -d "/Library/Logs/openitcockpit-agent" ]; then
+#        rm -rf /Library/Logs/openitcockpit-agent
+#    fi
+#
+#    rm -rf /Applications/openitcockpit-agent/com.it-novum.openitcockpit.agent.plist /Library/LaunchDaemons/com.it-novum.openitcockpit.agent.plist /Applications/openitcockpit-agent/config.ini /Applications/openitcockpit-agent/customchecks.ini /Applications/openitcockpit-agent/prometheus_exporters.ini /Applications/openitcockpit-agent /private/etc/openitcockpit-agent
+#fi
