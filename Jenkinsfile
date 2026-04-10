@@ -717,7 +717,7 @@ def package_darwin_amd64() {
             --license "Apache License Version 2.0" --config-files Applications/openitcockpit-agent \\
             --maintainer "<d.ziegler@avendis.com>" \\
             --description "Uninstaller of openITCOCKPIT Monitoring Agent and remote plugin executor." --url "https://openitcockpit.io" \\
-            --before-install ../../../build/package/prerm.sh --version '$VERSION' --osxpkg-payload-free &&
+            --before-install ../../../build/package/macos/prerm.sh --version '$VERSION' --osxpkg-payload-free &&
             mv openitcockpit-agent-uninstaller-${VERSION}.pkg openitcockpit-agent-uninstaller-${VERSION}-darwin-all.pkg"""
 
         archiveArtifacts artifacts: 'release/packages/**', fingerprint: true
