@@ -58,9 +58,9 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
     <ROW File="example_config.cnf" Component_="example_config.cnf" FileName="config.ini" Attributes="0" SourcePath="&lt;AGENT_SOURCE&gt;example\config_example.ini" SelfReg="false"/>
     <ROW File="example_customchecks.cnf" Component_="example_config.cnf" FileName="CUSTOM~1.INI|customchecks.ini" Attributes="0" SourcePath="&lt;AGENT_SOURCE&gt;example\customchecks_example.ini" SelfReg="false"/>
-    <ROW File="openitcockpitagent.exe" Component_="openitcockpitagent.exe" FileName="OPENIT~1.EXE|openitcockpit-agent.exe" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AGENT_SOURCE&gt;release\windows\amd64\openitcockpit-agent.exe" SelfReg="false" DigSign="true"/>
+    <ROW File="openitcockpitagent.exe" Component_="openitcockpitagent.exe" FileName="OPENIT~1.EXE|openitcockpit-agent.exe" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AGENT_SOURCE&gt;release\windows\arm64\openitcockpit-agent.exe" SelfReg="false" DigSign="true"/>
     <ROW File="customchecks1.ini" Component_="example_config.cnf" FileName="PROMET~1.INI|prometheus_exporters.ini" Attributes="0" SourcePath="&lt;AGENT_SOURCE&gt;example\prometheus_exporters_example.ini" SelfReg="false"/>
-    <ROW File="licenses.csv" Component_="openitcockpitagent.exe" FileName="licenses.csv" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AGENT_SOURCE&gt;release\windows\amd64\licenses.csv" SelfReg="false"/>
+    <ROW File="licenses.csv" Component_="openitcockpitagent.exe" FileName="licenses.csv" Version="65535.65535.65535.65535" Attributes="0" SourcePath="&lt;AGENT_SOURCE&gt;release\windows\arm64\licenses.csv" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.AiPersistentDataComponent">
     <ROW PersistentRow="example_config.cnf" Type="0" Condition="1"/>
@@ -75,7 +75,7 @@
     <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="251"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
-    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="..\..\release\packages\windows" PackageFileName="openitcockpit-agent-[|ProductVersion]-amd64" Languages="de;en" LangOpt="1" InstallationType="4" SummInfoMetadata="Page Count:500" UseLargeSchema="true" Unicode="true" MsiPackageType="Arm64" UACExecutionLevel="2"/>
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="..\..\release\packages\windows" PackageFileName="openitcockpit-agent-[|ProductVersion]-arm64" Languages="de;en" LangOpt="1" InstallationType="4" SummInfoMetadata="Page Count:500" UseLargeSchema="true" Unicode="true" MsiPackageType="Arm64" UACExecutionLevel="2"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
     <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>

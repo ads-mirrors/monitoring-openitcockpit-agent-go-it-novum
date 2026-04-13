@@ -159,24 +159,26 @@ func TestExecuteFail(t *testing.T) {
 	}
 }
 
-func TestExecuteLogPathNotExists(t *testing.T) {
-	out := &bytes.Buffer{}
-	tpp := newTestPath(t, true)
-	defer tpp.close()
-
-	args := []string{"-c", tpp.configPath}
-	r := New()
-	r.platformPath = tpp
-	r.cmd.SetArgs(args)
-	r.cmd.SetOut(out)
-	r.cmd.SetErr(out)
-	err := r.Execute()
-	if err == nil {
-		t.Errorf("test failed \"%+v\"", args)
-	} else if !strings.Contains(err.Error(), "Could not open/create log file") {
-		t.Error("Unexpected error: ", err)
-	}
-}
+// 3.6.0 The Agent will now try to create the log dir if it does not exists
+// this is required on macOS as Apple removes the directory on macOS updates
+//func TestExecuteLogPathNotExists(t *testing.T) {
+//	out := &bytes.Buffer{}
+//	tpp := newTestPath(t, true)
+//	defer tpp.close()
+//
+//	args := []string{"-c", tpp.configPath}
+//	r := New()
+//	r.platformPath = tpp
+//	r.cmd.SetArgs(args)
+//	r.cmd.SetOut(out)
+//	r.cmd.SetErr(out)
+//	err := r.Execute()
+//	if err == nil {
+//		t.Errorf("test failed \"%+v\"", args)
+//	} else if !strings.Contains(err.Error(), "Could not open/create log file") {
+//		t.Error("Unexpected error: ", err)
+//	}
+//}
 
 func TestExecuteMissingPlatformPaths(t *testing.T) {
 	out := &bytes.Buffer{}
