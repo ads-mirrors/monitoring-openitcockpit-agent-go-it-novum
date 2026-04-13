@@ -663,25 +663,25 @@ def package_linux() {
         sh "chmod +x package/usr/bin/$BINNAME"
         sh "chmod +x package/etc/openitcockpit-agent/init/openitcockpit-agent.init"
         sh """cd release/packages/$GOOS &&
-            fpm -s dir -t deb -C ../../../package --name openitcockpit-agent --vendor 'it-novum GmbH' \\
+            fpm -s dir -t deb -C ../../../package --name openitcockpit-agent --vendor 'AVENDIS GmbH' \\
             --license 'Apache License Version 2.0' --config-files etc/openitcockpit-agent \\
-            --architecture $DEBARCH --maintainer '<daniel.ziegler@it-novum.com>' \\
+            --architecture $DEBARCH --maintainer '<d.ziegler@avendis.com>' \\
             --description 'openITCOCKPIT Monitoring Agent and remote plugin executor.' \\
             --url 'https://openitcockpit.io' --before-install ../../../build/package/preinst.sh \\
             --after-install ../../../build/package/postinst.sh --before-remove ../../../build/package/prerm.sh  \\
             --version '$VERSION'"""
         sh """cd release/packages/$GOOS &&
-            fpm -s dir -t rpm -C ../../../package --name openitcockpit-agent --vendor 'it-novum GmbH' \\
+            fpm -s dir -t rpm -C ../../../package --name openitcockpit-agent --vendor 'AVENDIS GmbH' \\
             --license 'Apache License Version 2.0' --config-files etc/openitcockpit-agent \\
-            --architecture $RPMARCH --maintainer '<daniel.ziegler@it-novum.com>' \\
+            --architecture $RPMARCH --maintainer '<d.ziegler@avendis.com>' \\
             --description 'openITCOCKPIT Monitoring Agent and remote plugin executor.' \\
             --url 'https://openitcockpit.io' --before-install ../../../build/package/preinst.sh \\
             --after-install ../../../build/package/postinst.sh --before-remove ../../../build/package/prerm.sh  \\
             --version '$VERSION'"""
         sh """cd release/packages/$GOOS &&
-            fpm -s dir -t pacman -C ../../../package --name openitcockpit-agent --vendor 'it-novum GmbH' \\
+            fpm -s dir -t pacman -C ../../../package --name openitcockpit-agent --vendor 'AVENDIS GmbH' \\
             --license 'Apache License Version 2.0' --config-files etc/openitcockpit-agent \\
-            --architecture $ARCH --maintainer '<daniel.ziegler@it-novum.com>' \\
+            --architecture $ARCH --maintainer '<d.ziegler@avendis.com>' \\
             --description 'openITCOCKPIT Monitoring Agent and remote plugin executor.' \\
             --url 'https://openitcockpit.io' --before-install ../../../build/package/preinst.sh \\
             --after-install ../../../build/package/postinst.sh --before-remove ../../../build/package/prerm.sh  \\
