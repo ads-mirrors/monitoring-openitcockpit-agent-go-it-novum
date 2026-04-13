@@ -16,7 +16,7 @@
     <ROW Property="BannerBitmap" Value="banner.jpg" MultiBuildValue="DefaultBuild:BannerTop.bmp" Type="1" MsiKey="BannerBitmap"/>
     <ROW Property="DISPLAYNAME" Value="openITCOCKPIT Monitoring Agent"/>
     <ROW Property="DialogBitmap" Value="dialog.jpg" MultiBuildValue="DefaultBuild:Dialog.bmp" Type="1" MsiKey="DialogBitmap"/>
-    <ROW Property="Manufacturer" Value="AVENDIS GmbH"/>
+    <ROW Property="Manufacturer" Value="openitcockpit"/>
     <ROW Property="ProductCode" Value="1031:{D055B6F9-D527-4772-B38E-82594C8ECC02} 1033:{D055B6F9-D527-4772-B38E-82594C8ECC02} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1031"/>
     <ROW Property="ProductName" Value="openitcockpit-agent"/>
@@ -187,7 +187,7 @@
     <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
     <ROW Action="Create_Firewall" Type="1" Source="PowerShellScriptLauncher.dll" Target="RunPowerShellScript" Options="1" AdditionalSeq="AI_DATA_SETTER"/>
     <ROW Action="Remove_Firewall" Type="1" Source="PowerShellScriptLauncher.dll" Target="RunPowerShellScript" Options="1" AdditionalSeq="AI_DATA_SETTER_1"/>
-    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]" MultiBuildTarget="DefaultBuild:[ProgramFilesFolder][ProductName]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
     <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
   </COMPONENT>
