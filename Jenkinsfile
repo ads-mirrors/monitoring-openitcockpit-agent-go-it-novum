@@ -32,6 +32,14 @@ pipeline {
                                 test_windows()
                             }
                         }
+                        stage('arm64') {
+                            environment {
+                                GOARCH = 'arm64'
+                            }
+                            steps {
+                                test_windows()
+                            }
+                        }
                         stage('386') {
                             environment {
                                 GOARCH = '386'
@@ -143,6 +151,14 @@ pipeline {
                         stage('amd64') {
                             environment {
                                 GOARCH = 'amd64'
+                            }
+                            steps {
+                                build_windows_binary()
+                            }
+                        }
+                        stage('arm64') {
+                            environment {
+                                GOARCH = 'arm64'
                             }
                             steps {
                                 build_windows_binary()
@@ -394,6 +410,19 @@ pipeline {
                                 // Go to https://one.digicert.com/ click on the User Icon in the top right corner and select "Admin Profile"
                                 // Now scroll down and create a new API Key and/or Client Certificate for Code Signing
                                 // Also update the credentials in Jenkins with the new values
+                                withCredentials([
+                                    string(credentialsId: 'SM_API_KEY', variable: 'SM_API_KEY'),
+                                    string(credentialsId: 'SM_CLIENT_CERT_PASSWORD', variable: 'SM_CLIENT_CERT_PASSWORD')
+                                ]) {
+                                    package_windows(branch)
+                                }
+                            }
+                        }
+                        stage('arm64') {
+                            environment {
+                                GOARCH = 'arm64'
+                            }
+                            steps {
                                 withCredentials([
                                     string(credentialsId: 'SM_API_KEY', variable: 'SM_API_KEY'),
                                     string(credentialsId: 'SM_CLIENT_CERT_PASSWORD', variable: 'SM_CLIENT_CERT_PASSWORD')
