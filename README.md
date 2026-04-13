@@ -133,7 +133,7 @@ Install with double clicking the msi installer file.
 Automated install
 
 ```
-msiexec.exe /i openitcockpit-agent*.msi INSTALLDIR="C:\Program Files\it-novum\openitcockpit-agent\" /qn
+msiexec.exe /i openitcockpit-agent*.msi INSTALLDIR="C:\Program Files\openitcockpit\openitcockpit-agent\" /qn
 ```
 
 Uninstall
