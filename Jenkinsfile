@@ -32,6 +32,14 @@ pipeline {
                                 test_windows()
                             }
                         }
+                        stage('arm64') {
+                            environment {
+                                GOARCH = 'arm64'
+                            }
+                            steps {
+                                test_windows()
+                            }
+                        }
                         stage('386') {
                             environment {
                                 GOARCH = '386'
@@ -143,6 +151,14 @@ pipeline {
                         stage('amd64') {
                             environment {
                                 GOARCH = 'amd64'
+                            }
+                            steps {
+                                build_windows_binary()
+                            }
+                        }
+                        stage('arm64') {
+                            environment {
+                                GOARCH = 'arm64'
                             }
                             steps {
                                 build_windows_binary()
@@ -402,6 +418,19 @@ pipeline {
                                 }
                             }
                         }
+                        stage('arm64') {
+                            environment {
+                                GOARCH = 'arm64'
+                            }
+                            steps {
+                                withCredentials([
+                                    string(credentialsId: 'SM_API_KEY', variable: 'SM_API_KEY'),
+                                    string(credentialsId: 'SM_CLIENT_CERT_PASSWORD', variable: 'SM_CLIENT_CERT_PASSWORD')
+                                ]) {
+                                    package_windows(branch)
+                                }
+                            }
+                        }
                         stage('386') {
                             environment {
                                 GOARCH = '386'
@@ -634,25 +663,25 @@ def package_linux() {
         sh "chmod +x package/usr/bin/$BINNAME"
         sh "chmod +x package/etc/openitcockpit-agent/init/openitcockpit-agent.init"
         sh """cd release/packages/$GOOS &&
-            fpm -s dir -t deb -C ../../../package --name openitcockpit-agent --vendor 'it-novum GmbH' \\
+            fpm -s dir -t deb -C ../../../package --name openitcockpit-agent --vendor 'AVENDIS GmbH' \\
             --license 'Apache License Version 2.0' --config-files etc/openitcockpit-agent \\
-            --architecture $DEBARCH --maintainer '<daniel.ziegler@it-novum.com>' \\
+            --architecture $DEBARCH --maintainer '<d.ziegler@avendis.com>' \\
             --description 'openITCOCKPIT Monitoring Agent and remote plugin executor.' \\
             --url 'https://openitcockpit.io' --before-install ../../../build/package/preinst.sh \\
             --after-install ../../../build/package/postinst.sh --before-remove ../../../build/package/prerm.sh  \\
             --version '$VERSION'"""
         sh """cd release/packages/$GOOS &&
-            fpm -s dir -t rpm -C ../../../package --name openitcockpit-agent --vendor 'it-novum GmbH' \\
+            fpm -s dir -t rpm -C ../../../package --name openitcockpit-agent --vendor 'AVENDIS GmbH' \\
             --license 'Apache License Version 2.0' --config-files etc/openitcockpit-agent \\
-            --architecture $RPMARCH --maintainer '<daniel.ziegler@it-novum.com>' \\
+            --architecture $RPMARCH --maintainer '<d.ziegler@avendis.com>' \\
             --description 'openITCOCKPIT Monitoring Agent and remote plugin executor.' \\
             --url 'https://openitcockpit.io' --before-install ../../../build/package/preinst.sh \\
             --after-install ../../../build/package/postinst.sh --before-remove ../../../build/package/prerm.sh  \\
             --version '$VERSION'"""
         sh """cd release/packages/$GOOS &&
-            fpm -s dir -t pacman -C ../../../package --name openitcockpit-agent --vendor 'it-novum GmbH' \\
+            fpm -s dir -t pacman -C ../../../package --name openitcockpit-agent --vendor 'AVENDIS GmbH' \\
             --license 'Apache License Version 2.0' --config-files etc/openitcockpit-agent \\
-            --architecture $ARCH --maintainer '<daniel.ziegler@it-novum.com>' \\
+            --architecture $ARCH --maintainer '<d.ziegler@avendis.com>' \\
             --description 'openITCOCKPIT Monitoring Agent and remote plugin executor.' \\
             --url 'https://openitcockpit.io' --before-install ../../../build/package/preinst.sh \\
             --after-install ../../../build/package/postinst.sh --before-remove ../../../build/package/prerm.sh  \\
@@ -706,18 +735,18 @@ def package_darwin_amd64() {
         sh "cp example/config_example.ini package/Applications/openitcockpit-agent/config.ini"
         sh "cp example/customchecks_example.ini package/Applications/openitcockpit-agent/customchecks.ini"
         sh "cp example/prometheus_exporters_example.ini package/Applications/openitcockpit-agent/prometheus_exporters.ini"
-        sh "cp build/package/com.it-novum.openitcockpit.agent.plist package/Applications/openitcockpit-agent/com.it-novum.openitcockpit.agent.plist"
+        sh "cp build/package/io.openitcockpit.agent.plist package/Applications/openitcockpit-agent/io.openitcockpit.agent.plist"
         sh "chmod +x package/Applications/openitcockpit-agent/$BINNAME"
 
         sh """/usr/local/bin/packagesbuild --package-version "${VERSION}" --reference-folder . build/macos/openITCOCKPIT\\ Monitoring\\ Agent/openITCOCKPIT\\ Monitoring\\ Agent.pkgproj"""
-        sh """mv -f build/macos/openITCOCKPIT\\ Monitoring\\ Agent/build/openitcockpit-agent-darwin-amd64.pkg release/packages/${GOOS}/openitcockpit-agent-${VERSION}-darwin-${GOARCH}.pkg"""
+        sh """mv -f openitcockpit-agent-darwin-amd64.pkg release/packages/${GOOS}/openitcockpit-agent-${VERSION}-darwin-${GOARCH}.pkg"""
 
         sh """cd release/packages/$GOOS &&
-            fpm -s dir -t osxpkg -C ../../../package_osx_uninstaller --name openitcockpit-agent-uninstaller --vendor "it-novum GmbH" \\
+            fpm -s dir -t osxpkg -C ../../../package_osx_uninstaller --name openitcockpit-agent-uninstaller --vendor "AVENDIS GmbH" \\
             --license "Apache License Version 2.0" --config-files Applications/openitcockpit-agent \\
-            --maintainer "<daniel.ziegler@it-novum.com>" \\
+            --maintainer "<d.ziegler@avendis.com>" \\
             --description "Uninstaller of openITCOCKPIT Monitoring Agent and remote plugin executor." --url "https://openitcockpit.io" \\
-            --before-install ../../../build/package/prerm.sh --version '$VERSION' --osxpkg-payload-free &&
+            --before-install ../../../build/package/macos/prerm.sh --version '$VERSION' --osxpkg-payload-free &&
             mv openitcockpit-agent-uninstaller-${VERSION}.pkg openitcockpit-agent-uninstaller-${VERSION}-darwin-all.pkg"""
 
         archiveArtifacts artifacts: 'release/packages/**', fingerprint: true
@@ -753,11 +782,11 @@ def package_darwin_arm64() {
         sh "cp example/config_example.ini package/Applications/openitcockpit-agent/config.ini"
         sh "cp example/customchecks_example.ini package/Applications/openitcockpit-agent/customchecks.ini"
         sh "cp example/prometheus_exporters_example.ini package/Applications/openitcockpit-agent/prometheus_exporters.ini"
-        sh "cp build/package/com.it-novum.openitcockpit.agent.plist package/Applications/openitcockpit-agent/com.it-novum.openitcockpit.agent.plist"
+        sh "cp build/package/io.openitcockpit.agent.plist package/Applications/openitcockpit-agent/io.openitcockpit.agent.plist"
         sh "chmod +x package/Applications/openitcockpit-agent/$BINNAME"
 
         sh """/usr/local/bin/packagesbuild --package-version "${VERSION}" --reference-folder . build/macos/openITCOCKPIT\\ Monitoring\\ Agent\\ arm64/openITCOCKPIT\\ Monitoring\\ Agent.pkgproj"""
-        sh """mv -f build/macos/openITCOCKPIT\\ Monitoring\\ Agent\\ arm64/build/openitcockpit-agent-darwin-arm64.pkg release/packages/${GOOS}/openitcockpit-agent-${VERSION}-darwin-${GOARCH}.pkg"""
+        sh """mv -f openitcockpit-agent-darwin-arm64.pkg release/packages/${GOOS}/openitcockpit-agent-${VERSION}-darwin-${GOARCH}.pkg"""
 
         archiveArtifacts artifacts: 'release/packages/**', fingerprint: true
     }

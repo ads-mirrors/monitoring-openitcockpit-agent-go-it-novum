@@ -16,7 +16,7 @@
     <ROW Property="BannerBitmap" Value="banner.jpg" MultiBuildValue="DefaultBuild:BannerTop.bmp" Type="1" MsiKey="BannerBitmap"/>
     <ROW Property="DISPLAYNAME" Value="openITCOCKPIT Monitoring Agent"/>
     <ROW Property="DialogBitmap" Value="dialog.jpg" MultiBuildValue="DefaultBuild:Dialog.bmp" Type="1" MsiKey="DialogBitmap"/>
-    <ROW Property="Manufacturer" Value="it-novum"/>
+    <ROW Property="Manufacturer" Value="openitcockpit"/>
     <ROW Property="ProductCode" Value="1031:{D055B6F9-D527-4772-B38E-82594C8ECC02} 1033:{D055B6F9-D527-4772-B38E-82594C8ECC02} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1031"/>
     <ROW Property="ProductName" Value="openitcockpit-agent"/>
@@ -34,6 +34,8 @@
     <ROW Property="WindowsTypeNT5XDisplay" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
     <ROW Property="WindowsTypeNT60" MultiBuildValue="DefaultBuild:Windows Vista/Server 2008" ValueLocId="-"/>
     <ROW Property="WindowsTypeNT60Display" MultiBuildValue="DefaultBuild:Windows Vista/Server 2008" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT64" MultiBuildValue="DefaultBuild:Windows 7 x64, Windows Server 2008 R2 x64, Windows 8 x64, Windows Server 2012 x64, Windows 8.1 x64, Windows Server 2012 R2 x64" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT64Display" MultiBuildValue="DefaultBuild:Windows 7 x64, Windows Server 2008 R2 x64, Windows 8 x64, Windows Server 2012 x64, Windows 8.1 x64, Windows Server 2012 R2 x64" ValueLocId="-"/>
     <ROW Property="WindowsTypeNTDisplay" MultiBuildValue="DefaultBuild:32-bit Windows versions" ValueLocId="-"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
@@ -242,6 +244,7 @@
     <ROW Action="AI_RestartElevated" Sequence="51" Builds="DefaultBuild"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="( Version9X OR ( NOT VersionNT64 ) OR ( VersionNT64 AND ((VersionNT64 &lt;&gt; 601) OR (MsiNTProductType &lt;&gt; 1)) AND ((VersionNT64 &lt;&gt; 601) OR (MsiNTProductType = 1)) AND ((VersionNT64 &lt;&gt; 602) OR (MsiNTProductType &lt;&gt; 1)) AND ((VersionNT64 &lt;&gt; 602) OR (MsiNTProductType = 1)) AND ((VersionNT64 &lt;&gt; 603) OR (MsiNTProductType &lt;&gt; 1)) AND ((VersionNT64 &lt;&gt; 603) OR (MsiNTProductType = 1)) ) )" Description="[ProductName] kann unter den folgenden Windows-Versionen nicht installiert werden: [WindowsTypeNT64Display]." DescriptionLocId="AI.LaunchCondition.NoSpecificNT64" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="( Version9X OR VersionNT64 )" Description="[ProductName] kann nicht auf [WindowsTypeNTDisplay] installiert werden." DescriptionLocId="AI.LaunchCondition.NoNT" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] kann nicht auf [WindowsTypeNT5XDisplay] installiert werden." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>
     <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] kann nicht auf [WindowsTypeNT40Display] installiert werden." DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild"/>

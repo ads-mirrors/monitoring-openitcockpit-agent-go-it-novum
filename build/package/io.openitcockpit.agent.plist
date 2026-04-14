@@ -3,7 +3,7 @@
 <plist version="1.0">
         <dict>
                 <key>Label</key>
-                <string>com.it-novum.openitcockpit.agent</string>
+                <string>io.openitcockpit.agent</string>
                 <key>ProgramArguments</key>
                 <array>
                         <string>/Applications/openitcockpit-agent/openitcockpit-agent</string>

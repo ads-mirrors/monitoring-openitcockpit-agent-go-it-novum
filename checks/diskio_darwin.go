@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/openITCOCKPIT/openitcockpit-agent-go/safemaths"
+	"github.com/openITCOCKPIT/openitcockpit-agent-go/utils"
 	"github.com/shirou/gopsutil/v4/disk"
 )
 
@@ -71,12 +72,12 @@ func (c *CheckDiskIo) Run(ctx context.Context) (interface{}, error) {
 				TotalIopsPerSecond:  uint64(totIopsPerSecond),
 				ReadBytesPerSecond:  uint64(readBytesPerSecond),
 				WriteBytesPerSecond: uint64(writeBytesPerSecond),
-				TotalAvgWait:        totalAvgWait,
-				ReadAvgWait:         readAvgWait,
-				WriteAvgWait:        writeAvgWait,
-				ReadAvgSize:         readAvgSize,
-				WriteAvgSize:        writeAvgSize,
-				LoadPercent:         loadPercent,
+				TotalAvgWait:        utils.SafeFloat(totalAvgWait),
+				ReadAvgWait:         utils.SafeFloat(readAvgWait),
+				WriteAvgWait:        utils.SafeFloat(writeAvgWait),
+				ReadAvgSize:         utils.SafeFloat(readAvgSize),
+				WriteAvgSize:        utils.SafeFloat(writeAvgSize),
+				LoadPercent:         utils.SafeFloat(loadPercent),
 			}
 
 			diskResults[iostats.Name] = diskstats

@@ -17,6 +17,11 @@ func (s *SoftwareCollector) runCollection(parent context.Context, timeout time.D
 		log.Errorln("Error collecting software info for macOS:", err)
 	}
 
+	// Collect Homebrew formulae and casks (merged into pkgInfo)
+	if s.Configuration.Packagemanager.EnableAlternativePm {
+		CollectBrewPackages(ctx, &pkgInfo, s.Configuration.Packagemanager.LimitDescriptionLength, s.Configuration.Packagemanager.EnableUpdateCheck)
+	}
+
 	log.Debugln("Packagemanager: Software inventory collection for macOS completed")
 	s.Result <- &pkgInfo
 }

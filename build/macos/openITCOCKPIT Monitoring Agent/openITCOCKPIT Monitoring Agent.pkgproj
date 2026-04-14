@@ -29,22 +29,6 @@
 											<key>GID</key>
 											<integer>80</integer>
 											<key>PATH</key>
-											<string>package/Applications/openitcockpit-agent/com.it-novum.openitcockpit.agent.plist</string>
-											<key>PATH_TYPE</key>
-											<integer>3</integer>
-											<key>PERMISSIONS</key>
-											<integer>420</integer>
-											<key>TYPE</key>
-											<integer>3</integer>
-											<key>UID</key>
-											<integer>0</integer>
-										</dict>
-										<dict>
-											<key>CHILDREN</key>
-											<array/>
-											<key>GID</key>
-											<integer>80</integer>
-											<key>PATH</key>
 											<string>package/Applications/openitcockpit-agent/config.ini</string>
 											<key>PATH_TYPE</key>
 											<integer>3</integer>
@@ -64,6 +48,22 @@
 											<string>package/Applications/openitcockpit-agent/customchecks.ini</string>
 											<key>PATH_TYPE</key>
 											<integer>3</integer>
+											<key>PERMISSIONS</key>
+											<integer>420</integer>
+											<key>TYPE</key>
+											<integer>3</integer>
+											<key>UID</key>
+											<integer>0</integer>
+										</dict>
+										<dict>
+											<key>CHILDREN</key>
+											<array/>
+											<key>GID</key>
+											<integer>80</integer>
+											<key>PATH</key>
+											<string>../../package/io.openitcockpit.agent.plist</string>
+											<key>PATH_TYPE</key>
+											<integer>1</integer>
 											<key>PERMISSIONS</key>
 											<integer>420</integer>
 											<key>TYPE</key>
@@ -533,16 +533,16 @@
 				<key>POSTINSTALL_PATH</key>
 				<dict>
 					<key>PATH</key>
-					<string>build/package/postinst.sh</string>
+					<string>../../package/macos/postinst.sh</string>
 					<key>PATH_TYPE</key>
-					<integer>3</integer>
+					<integer>1</integer>
 				</dict>
 				<key>PREINSTALL_PATH</key>
 				<dict>
 					<key>PATH</key>
-					<string>build/package/preinst.sh</string>
+					<string>../../package/macos/preinst.sh</string>
 					<key>PATH_TYPE</key>
-					<integer>3</integer>
+					<integer>1</integer>
 				</dict>
 				<key>RESOURCES</key>
 				<array/>
@@ -556,7 +556,7 @@
 				<key>FOLLOW_SYMBOLIC_LINKS</key>
 				<false/>
 				<key>IDENTIFIER</key>
-				<string>com.it-novum.openitcockpit.agent</string>
+				<string>io.openitcockpit.agent</string>
 				<key>LOCATION</key>
 				<integer>0</integer>
 				<key>NAME</key>
@@ -739,9 +739,9 @@
 						<key>VALUE</key>
 						<dict>
 							<key>PATH</key>
-							<string>build/macos/intro.rtfd</string>
+							<string>../intro.rtfd</string>
 							<key>PATH_TYPE</key>
-							<integer>3</integer>
+							<integer>1</integer>
 						</dict>
 					</dict>
 				</array>
@@ -756,9 +756,9 @@
 						<key>VALUE</key>
 						<dict>
 							<key>PATH</key>
-							<string>build/msi/License-en.rtf</string>
+							<string>../../msi/License-en.rtf</string>
 							<key>PATH_TYPE</key>
-							<integer>3</integer>
+							<integer>1</integer>
 						</dict>
 					</dict>
 				</array>
@@ -802,7 +802,7 @@
 						<key>IC_REQUIREMENT_OS_DISTRIBUTION_TYPE</key>
 						<integer>0</integer>
 						<key>IC_REQUIREMENT_OS_MINIMUM_VERSION</key>
-						<integer>101400</integer>
+						<integer>150000</integer>
 					</dict>
 					<key>IC_REQUIREMENT_CHECK_TYPE</key>
 					<integer>1</integer>
@@ -814,7 +814,7 @@
 							<key>LANGUAGE</key>
 							<string>English</string>
 							<key>VALUE</key>
-							<string>The openITCOCKPIT Monitoring Agent requires at least macOS Mojave 10.14</string>
+							<string>The openITCOCKPIT Monitoring Agent requires at least macOS Sequoia</string>
 						</dict>
 					</array>
 					<key>NAME</key>
@@ -871,7 +871,7 @@
 			<key>BUILD_PATH</key>
 			<dict>
 				<key>PATH</key>
-				<string>build</string>
+				<string>../../..</string>
 				<key>PATH_TYPE</key>
 				<integer>1</integer>
 			</dict>

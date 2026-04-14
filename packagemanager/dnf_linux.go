@@ -39,7 +39,7 @@ func (d DnfManager) UpdateMetadata(ctx context.Context) error {
 	// DNF automatically updates metadata during operations, so no action is needed here.
 	// However, we can run a check-update with --refresh to force a metadata refresh.
 	bin := d.getPkgManagerBinary()
-	timeout := 60 * time.Second
+	timeout := 300 * time.Second
 	_, err := utils.RunCommand(ctx, utils.CommandArgs{
 		Command: bin + " --refresh --quiet check-update",
 		Timeout: timeout,

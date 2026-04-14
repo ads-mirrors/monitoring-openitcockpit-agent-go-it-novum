@@ -15,12 +15,12 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/prometheus-community/windows_exporter v0.23.1
 	github.com/prometheus/procfs v0.19.2
-	github.com/shirou/gopsutil/v4 v4.25.11
+	github.com/shirou/gopsutil/v4 v4.26.3
 	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/cobra v1.10.1
 	github.com/spf13/viper v1.21.0
 	github.com/yusufpapurcu/wmi v1.2.4
-	golang.org/x/sys v0.38.0
+	golang.org/x/sys v0.41.0
 	golang.org/x/text v0.30.0
 	libvirt.org/libvirt-go v7.4.0+incompatible
 )
@@ -33,7 +33,7 @@ require (
 	github.com/distribution/reference v0.6.0 // indirect
 	github.com/docker/go-connections v0.6.0 // indirect
 	github.com/docker/go-units v0.5.0 // indirect
-	github.com/ebitengine/purego v0.9.1 // indirect
+	github.com/ebitengine/purego v0.10.0 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/fsnotify/fsnotify v1.9.0 // indirect
 	github.com/go-logr/logr v1.4.3 // indirect

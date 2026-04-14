@@ -62,7 +62,7 @@ func (p *windowsPlatformPath) AdditionalData() map[string]string {
 func getPlatformPath() PlatformPath {
 	return &windowsPlatformPath{
 		registryKey:  registry.LOCAL_MACHINE,
-		registryPath: `SOFTWARE\it-novum\InstalledProducts\openitcockpit-agent`,
+		registryPath: `SOFTWARE\openitcockpit\InstalledProducts\openitcockpit-agent`,
 		registryName: "InstallLocation",
 	}
 }

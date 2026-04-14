@@ -15,7 +15,7 @@ import (
 )
 
 // AgentVersion as the name says
-const AgentVersion = "3.5.2"
+const AgentVersion = "3.6.0"
 
 // CustomCheck are external plugins and scripts which should be executed by the Agent
 type CustomCheck struct {
@@ -65,6 +65,7 @@ type PrometheusExporter struct {
 type PackagemanagerConfiguration struct {
 	Enabled                bool  `mapstructure:"enabled"`
 	EnableUpdateCheck      bool  `mapstructure:"enable-update-check"`
+	EnableAlternativePm    bool  `mapstructure:"enable-alternative-packagemanagers"`
 	CheckInterval          int64 `mapstructure:"check-interval"`
 	LimitDescriptionLength int64 `mapstructure:"limit-description-length"`
 }
@@ -202,9 +203,11 @@ var prometheusDefaultvalue = map[string]interface{}{
 }
 
 var packagemanagerDefaultvalue = map[string]interface{}{
-	"enabled":                  true,
-	"check-interval":           60,
-	"limit-description-length": 80,
+	"enabled":                            true,
+	"enable-update-check":                true,
+	"enable-alternative-packagemanagers": false,
+	"check-interval":                     60,
+	"limit-description-length":           80,
 }
 
 func setConfigurationDefaults(v *viper.Viper) {

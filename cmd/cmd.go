@@ -62,6 +62,15 @@ func (r *RootCmd) preRun(cmd *cobra.Command, args []string) error {
 	}
 
 	if !r.disableLog {
+		// Check if log directory exists, if not try to create it
+		dir := filepath.Dir(r.logPath)
+		if _, err := os.Stat(dir); os.IsNotExist(err) {
+			err := os.MkdirAll(dir, 0755)
+			if err != nil {
+				fmt.Printf("Could not create log directory: %s\n", err)
+			}
+		}
+
 		fl, err := os.OpenFile(r.logPath, os.O_RDWR|os.O_APPEND|os.O_CREATE, 0600)
 		if err != nil {
 			return fmt.Errorf("Could not open/create log file: %s", err)

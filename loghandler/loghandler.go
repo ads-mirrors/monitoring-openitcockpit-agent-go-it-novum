@@ -35,6 +35,12 @@ type LogHandler struct {
 }
 
 func (h *LogHandler) openLogFile() {
+	// Check if log directory exists, if not try to create it
+	dir := filepath.Dir(h.LogPath)
+	if _, err := os.Stat(dir); os.IsNotExist(err) {
+		os.MkdirAll(dir, 0755)
+	}
+
 	log.Infoln("LogHandler: create/open log file")
 
 	fl, err := os.OpenFile(h.LogPath, os.O_APPEND|os.O_CREATE|os.O_RDWR, 0600)
