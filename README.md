@@ -172,11 +172,11 @@ GOOS=freebsd GOARCH=amd64 go build -o openitcockpit-agent
 
 ## Supported Platforms
 
-| Platform              | Windows                | Linux | macOS | FreeBSD |
-|-----------------------|------------------------|-------|-------|---------|
-| 64 bit (amd64)        | ✅                      | ✅     | ✅     | ✅       |
-| 32 bit (i386)         | ✅                      | ✅     | -     | ✅       |
-| arm64 / Apple Silicon | Use the 32 bit version | ✅     | ✅     | ✅       |
+| Platform              | Windows | Linux | macOS | FreeBSD |
+|-----------------------|---------|-------|-------|---------|
+| 64 bit (amd64)        | ✅       | ✅     | ✅     | ✅       |
+| 32 bit (i386)         | ✅       | ✅     | -     | ✅       |
+| arm64 / Apple Silicon | ✅       | ✅     | ✅     | ✅       |
 
 
 Please see to Wiki how to [cross compile binaries](https://github.com/openITCOCKPIT/openitcockpit-agent-go/wiki/Build-binary#cross-compile) for different operating systems and CPU architectures.
@@ -248,7 +248,19 @@ On Windows systems, only operating system updates are reported, as there is no u
 |-------------------------|-----------------------|-----------------|
 | ✅                       | via `system_profiler` | _Not supported_ |
 
+
 On macOS systems, only operating system updates are reported, as there is no package manager. Installed software information is collected using `system_profiler`. Reboot detection is not supported on macOS.
+
+
+### Third Party Package Managers
+
+| Operating System | Package Manager   |
+|------------------|-------------------|
+| macOS            | Homebrew (`brew`) |
+
+
+Support for optional third party package managers can be enabled by the option `enable-alternative-packagemanagers = True` in the agent configuration file.
+This package managers are not part of the official operating system and therefore this feature is not enabled by default.
 
 ## License
 ```
