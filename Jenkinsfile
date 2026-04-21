@@ -473,7 +473,11 @@ pipeline {
                                 GOARCH = 'arm64'
                             }
                             steps {
-                                package_darwin_arm64()
+                                withCredentials([
+                                    string(credentialsId: 'ARM_MAC_PASSWORD', variable: 'ARM_MAC_PASSWORD')
+                                ]) {
+                                    package_darwin_arm64()
+                                }
                             }
                         }
                     }
@@ -790,6 +794,10 @@ def package_darwin_arm64() {
         sh "cp example/prometheus_exporters_example.ini package/Applications/openitcockpit-agent/prometheus_exporters.ini"
         sh "cp build/package/io.openitcockpit.agent.plist package/Applications/openitcockpit-agent/io.openitcockpit.agent.plist"
         sh "chmod +x package/Applications/openitcockpit-agent/$BINNAME"
+
+        // Unlock macOS Keychain to access the code signing certificates
+        sh """security unlock-keychain -p "$ARM_MAC_PASSWORD" login.keychain"""
+        sh """security set-keychain-settings -t 3600 -u login.keychain"""
 
         // Sign the binary (Developer ID Application)
         sh "codesign --force --options runtime --timestamp --sign 'EEFC9653F25EDBC2397EE55B33EF2E426A2DA394' ./package/Applications/openitcockpit-agent/$BINNAME"
