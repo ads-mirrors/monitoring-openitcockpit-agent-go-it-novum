@@ -803,7 +803,7 @@ def package_darwin_arm64() {
         sh "codesign --force --options runtime --timestamp --sign 'EEFC9653F25EDBC2397EE55B33EF2E426A2DA394' ./package/Applications/openitcockpit-agent/$BINNAME"
 
         sh """/usr/local/bin/packagesbuild --package-version "${VERSION}" --reference-folder . build/macos/openITCOCKPIT\\ Monitoring\\ Agent\\ arm64/openITCOCKPIT\\ Monitoring\\ Agent.pkgproj"""
-        sh """mv -f openitcockpit-agent-darwin-arm64.pkg release/packages/${GOOS}/openitcockpit-agent-${VERSION}-darwin-${GOARCH}.pkg"""
+        sh """mv -f openitcockpit-agent-darwin-arm64.pkg release/packages/${GOOS}/openitcockpit-agent-${VERSION}-darwin-${GOARCH}_unsigned.pkg"""
 
         // Sign the pkg-installer (Developer ID Installer)
         sh """productsign --sign "83DD3DEAE7391DEC3F92567E83A4F3ABAEC8A421" ./release/packages/${GOOS}/openitcockpit-agent-${VERSION}-darwin-${GOARCH}_unsigned.pkg ./release/packages/${GOOS}/openitcockpit-agent-${VERSION}-darwin-${GOARCH}.pkg"""
