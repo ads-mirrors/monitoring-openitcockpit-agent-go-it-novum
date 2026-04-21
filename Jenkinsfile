@@ -747,7 +747,7 @@ def package_darwin_amd64() {
         sh "chmod +x package/Applications/openitcockpit-agent/$BINNAME"
 
         // Unlock macOS Keychain to access the code signing certificates
-        sh """security unlock-keychain -p "$INTEL_MAC_PASSWORD" login.keychain"""
+        sh """security unlock-keychain -p '$INTEL_MAC_PASSWORD' login.keychain"""
         sh """security set-keychain-settings -t 3600 -u login.keychain"""
 
         // Sign the binary (Developer ID Application)
