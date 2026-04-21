@@ -760,9 +760,12 @@ def package_darwin_amd64() {
         sh """productsign --sign "83DD3DEAE7391DEC3F92567E83A4F3ABAEC8A421" ./release/packages/${GOOS}/openitcockpit-agent-${VERSION}-darwin-${GOARCH}_unsigned.pkg ./release/packages/${GOOS}/openitcockpit-agent-${VERSION}-darwin-${GOARCH}.pkg"""
 
         // Sent to Apple for notarization
-        sh """xcrun notarytool submit ./release/packages/${GOOS}/openitcockpit-agent-${VERSION}-darwin-${GOARCH}.pkg --keychain-profile "agent-notary-profile" --wait"""
-        // Attach ticket for offline verification on other machines
-        sh """xcrun stapler staple ./release/packages/${GOOS}/openitcockpit-agent-${VERSION}-darwin-${GOARCH}.pkg"""
+        if (env.BRANCH_NAME == 'main') {
+            // Enable notarization for main branch
+            sh """xcrun notarytool submit ./release/packages/${GOOS}/openitcockpit-agent-${VERSION}-darwin-${GOARCH}.pkg --keychain-profile "agent-notary-profile" --wait"""
+            // Attach ticket for offline verification on other machines
+            sh """xcrun stapler staple ./release/packages/${GOOS}/openitcockpit-agent-${VERSION}-darwin-${GOARCH}.pkg"""
+        }
 
         sh """rm -f ./release/packages/${GOOS}/openitcockpit-agent-${VERSION}-darwin-${GOARCH}_unsigned.pkg"""
 
@@ -825,9 +828,12 @@ def package_darwin_arm64() {
         sh """productsign --sign "83DD3DEAE7391DEC3F92567E83A4F3ABAEC8A421" ./release/packages/${GOOS}/openitcockpit-agent-${VERSION}-darwin-${GOARCH}_unsigned.pkg ./release/packages/${GOOS}/openitcockpit-agent-${VERSION}-darwin-${GOARCH}.pkg"""
 
         // Sent to Apple for notarization
-        sh """xcrun notarytool submit ./release/packages/${GOOS}/openitcockpit-agent-${VERSION}-darwin-${GOARCH}.pkg --keychain-profile "agent-notary-profile" --wait"""
-        // Attach ticket for offline verification on other machines
-        sh """xcrun stapler staple ./release/packages/${GOOS}/openitcockpit-agent-${VERSION}-darwin-${GOARCH}.pkg"""
+        if (env.BRANCH_NAME == 'main') {
+            // Enable notarization for main branch
+            sh """xcrun notarytool submit ./release/packages/${GOOS}/openitcockpit-agent-${VERSION}-darwin-${GOARCH}.pkg --keychain-profile "agent-notary-profile" --wait"""
+            // Attach ticket for offline verification on other machines
+            sh """xcrun stapler staple ./release/packages/${GOOS}/openitcockpit-agent-${VERSION}-darwin-${GOARCH}.pkg"""
+        }
 
         sh """rm -f ./release/packages/${GOOS}/openitcockpit-agent-${VERSION}-darwin-${GOARCH}_unsigned.pkg"""
 
